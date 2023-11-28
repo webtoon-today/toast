@@ -6,7 +6,7 @@ export default [
     {
         input: 'src/main.js',
         output: {
-            file: './dist/index.js',
+            file: './dist/bundle.js',
             format: 'cjs'
         },
         plugins: [
