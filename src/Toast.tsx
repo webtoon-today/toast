@@ -2,11 +2,9 @@ import React from 'react';
 import { toastAlertAtom } from './Recoil/Toast';
 import { useRecoilValue } from 'recoil';
 
-export { useToastAlert } from './Recoil/Toast';
-
 import './Toast.scss';
 
-const Toast = () => {
+export const Toast = () => {
     const toast = useRecoilValue(toastAlertAtom);
     const [show, setShow] = React.useState(false);
 
@@ -42,5 +40,3 @@ const Toast = () => {
         </div>
     )
 }
-
-export default Toast;
