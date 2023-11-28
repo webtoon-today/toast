@@ -2,6 +2,7 @@ import * as react_jsx_runtime from 'react/jsx-runtime';
 import { ReactNode } from 'react';
 
 declare const Toast: () => react_jsx_runtime.JSX.Element;
+
 declare const types: readonly ["success", "warning", "error", "info"];
 type toastIconTypes = typeof types[number];
 type toastObjectType = {
@@ -13,9 +14,8 @@ type toastAlertType = {
     (obj: toastObjectType): void;
     (message: string, timeout?: number, iconType?: toastIconTypes): void;
 };
-declare const useToast: () => {
-    toast: toastObjectType;
+declare const useToastAlert: () => {
     toastAlert: toastAlertType;
 };
 
-export { Toast, useToast };
+export { Toast, useToastAlert };

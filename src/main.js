@@ -1,1 +1,2 @@
-export { Toast, useToast } from "./Toast.tsx";
+export { Toast } from "./Toast.tsx";
+export { useToastAlert } from "./Recoil/Toast.ts";
