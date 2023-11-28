@@ -11,7 +11,12 @@ export default [
         },
         plugins: [
             typescript({ tsconfig: './tsconfig.json' }),
-            scss(),
+            scss({
+                output: true,
+                failOnError: true,
+                outputStyle: "compressed",
+                fileName: "index.css",
+            })
         ]
     },
     {
@@ -22,7 +27,12 @@ export default [
         },
         plugins: [
             dts(),
-            scss()
+            scss({
+                output: true,
+                failOnError: true,
+                outputStyle: "compressed",
+                fileName: "index.css",
+            })
         ]
     }
 ];
