@@ -13,15 +13,16 @@ export default [
             typescript({ tsconfig: './tsconfig.json' }),
             scss(),
         ]
-    },{
-        input: 'src/main.js',
-        output: {
-            file: './dist/dts/index.d.ts',
-            format: 'es'
-        },
-        plugins: [
-            dts(),
-            scss()
-        ]
-    }
+    },
+    // {
+    //     input: 'src/main.js',
+    //     output: {
+    //         file: './dist/dts/index.d.ts',
+    //         format: 'es'
+    //     },
+    //     plugins: [
+    //         dts(),
+    //         scss()
+    //     ]
+    // }
 ];
