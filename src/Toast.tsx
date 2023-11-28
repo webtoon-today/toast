@@ -1,11 +1,9 @@
-import React from 'react';
-import { toastAlertAtom } from './Recoil/Toast';
-import { useRecoilValue } from 'recoil';
+import React, { ReactNode, useCallback, useState } from 'react';
 
 import './Toast.scss';
 
 export const Toast = () => {
-    const toast = useRecoilValue(toastAlertAtom);
+    const { toast } = useToast();
     const [show, setShow] = React.useState(false);
 
     React.useEffect(()=>{
@@ -39,4 +37,43 @@ export const Toast = () => {
             </div>
         </div>
     )
+}
+
+const types = ["success", "warning", "error", "info"] as const
+type toastIconTypes = typeof types[number];
+
+type toastObjectType = {
+    message: string | ReactNode,
+    timeout?: number,
+    iconType?: toastIconTypes
+}
+type toastAlertType = {
+    (obj: toastObjectType): void;
+    (message: string, timeout?: number, iconType?: toastIconTypes): void;
+}
+
+export const useToast = () => {
+    const [ toast, setToast ] = useState<toastObjectType>({message: '', timeout: 3000});
+
+    const toastAlert: toastAlertType = useCallback( (
+        messageOfParamsOrToastObject: string | toastObjectType,
+        timeoutOfParams?: number,
+        iconTypeOfParams?: toastIconTypes
+    ): void => {
+        let message, timeout, iconType;
+
+        if (typeof messageOfParamsOrToastObject === 'string') {
+            message = messageOfParamsOrToastObject;
+            timeout = timeoutOfParams;
+            iconType = iconTypeOfParams;
+        } else {
+            message = messageOfParamsOrToastObject.message;
+            timeout = messageOfParamsOrToastObject.timeout;
+            iconType = messageOfParamsOrToastObject.iconType;
+        }
+
+        setToast({message, timeout: timeout || 3000, iconType});
+    },[setToast])
+
+    return {toast, toastAlert}
 }

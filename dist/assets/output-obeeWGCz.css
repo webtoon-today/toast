@@ -3,6 +3,8 @@
   font-size: 1rem;
   position: fixed;
   top: 100px;
+  left: 50%;
+  transform: translateX(-50%);
   text-align: center;
   width: 100vw;
   min-height: 50px;
