@@ -1,6 +1,6 @@
 import typescript from "@rollup/plugin-typescript";
 import { dts } from "rollup-plugin-dts";
-import scss from "rollup-plugin-scss";
+import postcss from "rollup-plugin-postcss";
 
 export default [
     {
@@ -11,11 +11,9 @@ export default [
         },
         plugins: [
             typescript({ tsconfig: './tsconfig.json' }),
-            scss({
-                output: true,
-                failOnError: true,
-                outputStyle: "compressed",
-                fileName: "index.css",
+            postcss({
+                inject: true,
+                extensions: ['.css', '.scss'],
             })
         ]
     },
@@ -27,12 +25,7 @@ export default [
         },
         plugins: [
             dts(),
-            scss({
-                output: true,
-                failOnError: true,
-                outputStyle: "compressed",
-                fileName: "index.css",
-            })
+            postcss()
         ]
     }
 ];

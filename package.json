@@ -13,6 +13,7 @@
     "react": "^17.0.2",
     "rollup": "^4.6.0",
     "rollup-plugin-dts": "^6.1.0",
+    "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-scss": "^4.0.0",
     "sass": "^1.69.5",
     "tslib": "^2.6.2",
