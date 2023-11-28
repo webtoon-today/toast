@@ -4,7 +4,7 @@ import postcss from "rollup-plugin-postcss";
 
 export default [
     {
-        input: 'src/main.js',
+        input: 'src/main.ts',
         output: {
             file: './index.js',
             format: 'cjs'
@@ -18,7 +18,7 @@ export default [
         ]
     },
     {
-        input: 'src/main.js',
+        input: 'src/main.ts',
         output: {
             file: './index.d.ts',
             format: 'es'

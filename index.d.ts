@@ -22,4 +22,4 @@ declare const useToastAlert: () => {
     toastAlert: toastAlertType;
 };
 
-export { Toast, useToastAlert };
+export { Toast, type toastAlertType, useToastAlert };
