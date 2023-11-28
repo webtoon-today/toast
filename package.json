@@ -1,5 +1,5 @@
 {
-  "name": "toast",
+  "name": "@webtoontoday/toast",
   "version": "1.0.1",
   "description": "",
   "main": "./index.js",
