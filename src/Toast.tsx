@@ -1,6 +1,6 @@
 import React from 'react';
 import { toastAlertAtom } from './Recoil/Toast';
-import { useRecoilValue } from 'recoil';
+import { RecoilRoot, useRecoilValue } from 'recoil';
 
 import './Toast.scss';
 
@@ -23,20 +23,22 @@ export const Toast = () => {
     },[toast])
 
     return (
-        <div className={'ToastBackgroundArea'} style={{ 
-            display: show ? 'block' : 'none'
-        }}>
-            <div className={`ToastBox ${toast && toast.iconType?"IconToast":""}`} >
-                {toast && toast.iconType
-                    ?<>
-                        <img src={`https://static.webtoon.today/ddah/icon/icon_${toast.iconType}.svg`} alt={toast.iconType} width={20} height={20} style={{marginRight: 10}} />
-                        {toast.message}
-                        <div className={'CheckButton'} onClick={()=>setShow(false)} >
-                            {'확인'}
-                        </div>
-                    </>
-                    :toast.message}
+        <RecoilRoot>
+            <div className={'ToastBackgroundArea'} style={{ 
+                display: show ? 'block' : 'none'
+            }}>
+                <div className={`ToastBox ${toast && toast.iconType?"IconToast":""}`} >
+                    {toast && toast.iconType
+                        ?<>
+                            <img src={`https://static.webtoon.today/ddah/icon/icon_${toast.iconType}.svg`} alt={toast.iconType} width={20} height={20} style={{marginRight: 10}} />
+                            {toast.message}
+                            <div className={'CheckButton'} onClick={()=>setShow(false)} >
+                                {'확인'}
+                            </div>
+                        </>
+                        :toast.message}
+                </div>
             </div>
-        </div>
+        </RecoilRoot>
     )
 }
