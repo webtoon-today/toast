@@ -6,7 +6,7 @@ export default [
     {
         input: 'src/main.js',
         output: {
-            file: './index.js',
+            file: './dist/index.js',
             format: 'cjs'
         },
         plugins: [
@@ -17,7 +17,7 @@ export default [
     {
         input: 'src/main.js',
         output: {
-            file: './index.d.ts',
+            file: './dist/index.d.ts',
             format: 'es'
         },
         plugins: [
