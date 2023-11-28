@@ -2,7 +2,8 @@
   "name": "toast",
   "version": "1.0.1",
   "description": "",
-  "main": "./dist/index.js",
+  "main": "./dist/bundle.js",
+  "types": "./dist/dts/index.d.ts",
   "scripts": {
     "build": "rollup -c"
   },
