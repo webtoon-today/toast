@@ -1,5 +1,4 @@
 import typescript from "@rollup/plugin-typescript";
-import { dts } from "rollup-plugin-dts";
 import scss from "rollup-plugin-scss";
 
 export default [
