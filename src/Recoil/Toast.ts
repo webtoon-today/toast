@@ -6,14 +6,15 @@ const types = ["success", "warning", "error", "info"] as const
 export type toastIconTypes = typeof types[number];
 
 type toastObjectType = {
-    message: ReactNode,
+    message: string | ReactNode,
     timeout?: number,
     iconType?: toastIconTypes
 }
 export type toastAlertType = {
     (obj: toastObjectType): void;
-    (message: ReactNode, timeout?: number, iconType?: toastIconTypes): void;
+    (message: string, timeout?: number, iconType?: toastIconTypes): void;
 }
+
 
 const initialTimeout = 3000;
 const toastDefault: toastObjectType = {
@@ -29,25 +30,20 @@ export const useToastAlert = () => {
     const setToastAlertAtom = useSetRecoilState(toastAlertAtom);
 
     const toastAlert: toastAlertType = useCallback( (
-        messageOfParamsOrToastObject: ReactNode | toastObjectType,
+        messageOfParamsOrToastObject: string | toastObjectType,
         timeoutOfParams?: number,
         iconTypeOfParams?: toastIconTypes
     ): void => {
-        let message: ReactNode, timeout: number | undefined, iconType: toastIconTypes | undefined;
+        let message, timeout, iconType;
 
-        if (typeof messageOfParamsOrToastObject === 'object'
-            && messageOfParamsOrToastObject
-            && 'message' in messageOfParamsOrToastObject
-            && 'timeout' in messageOfParamsOrToastObject
-            && 'iconType' in messageOfParamsOrToastObject ) {
-
+        if (typeof messageOfParamsOrToastObject === 'string') {
+            message = messageOfParamsOrToastObject;
+            timeout = timeoutOfParams;
+            iconType = iconTypeOfParams;
+        } else {
             message = messageOfParamsOrToastObject.message;
             timeout = messageOfParamsOrToastObject.timeout;
             iconType = messageOfParamsOrToastObject.iconType;
-        } else {
-            message = messageOfParamsOrToastObject as unknown as ReactNode;
-            timeout = timeoutOfParams;
-            iconType = iconTypeOfParams;
         }
 
         setToastAlertAtom({message, timeout: timeout || initialTimeout, iconType});

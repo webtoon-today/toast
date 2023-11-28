@@ -16,19 +16,15 @@ const useToastAlert = () => {
     const setToastAlertAtom = recoil.useSetRecoilState(toastAlertAtom);
     const toastAlert = React.useCallback((messageOfParamsOrToastObject, timeoutOfParams, iconTypeOfParams) => {
         let message, timeout, iconType;
-        if (typeof messageOfParamsOrToastObject === 'object'
-            && messageOfParamsOrToastObject
-            && 'message' in messageOfParamsOrToastObject
-            && 'timeout' in messageOfParamsOrToastObject
-            && 'iconType' in messageOfParamsOrToastObject) {
-            message = messageOfParamsOrToastObject.message;
-            timeout = messageOfParamsOrToastObject.timeout;
-            iconType = messageOfParamsOrToastObject.iconType;
-        }
-        else {
+        if (typeof messageOfParamsOrToastObject === 'string') {
             message = messageOfParamsOrToastObject;
             timeout = timeoutOfParams;
             iconType = iconTypeOfParams;
+        }
+        else {
+            message = messageOfParamsOrToastObject.message;
+            timeout = messageOfParamsOrToastObject.timeout;
+            iconType = messageOfParamsOrToastObject.iconType;
         }
         setToastAlertAtom({ message, timeout: timeout || initialTimeout, iconType });
     }, [setToastAlertAtom]);
