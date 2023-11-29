@@ -25,7 +25,9 @@ export default [
         },
         plugins: [
             dts(),
-            postcss()
+            postcss({
+                inject: false
+            })
         ]
     }
 ];
