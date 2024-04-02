@@ -1,14 +1,14 @@
 @keyframes toast-in {
     0% {
-        top: 50px;
+        transform: translate3d(0, -100%, 0);
         display: none;
     }
     1% {
-        top: 50px;
+        transform: translate3d(0, -100%, 0);
         display: block;
     }
     100%{
-        top: 100px;
+        transform: translate3d(0, 0, 0);
         display: block;
     }
 }
@@ -16,13 +16,17 @@
 @keyframes toast-out {
     0% {
         display: block;
+        opacity: 1;
         scale: 1;
     }
     99% {
         display: block;
+        scale: 0;
+        opacity: 0;
     }
     100% {
         scale: 0;
+        opacity: 0;
         display: none;
     }
 }
@@ -31,7 +35,7 @@
     z-index: 2000;
     font-size: 1rem;
     position: fixed;
-    top: 100px; 
+    top: 24px; 
     text-align: center;
     width: 100vw; 
     min-height: 50px;
