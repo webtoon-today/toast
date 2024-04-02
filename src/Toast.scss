@@ -1,3 +1,32 @@
+@keyframes toast-in {
+    0% {
+        top: 0px;
+        display: none;
+    }
+    1% {
+        top: 0px;
+        display: block;
+    }
+    100%{
+        top: 100px;
+        display: block;
+    }
+}
+
+@keyframes toast-out {
+    0% {
+        display: block;
+        scale: 1;
+    }
+    99% {
+        display: block;
+    }
+    100% {
+        scale: 0;
+        display: none;
+    }
+}
+
 .ToastBackgroundArea{
     z-index: 2000;
     font-size: 1rem;
@@ -6,6 +35,9 @@
     text-align: center;
     width: 100vw; 
     min-height: 50px;
+
+    &.Open  { animation: toast-in   linear forwards; }
+    &.Close { animation: toast-out  linear forwards; }
 
     .ToastBox{
         display: inline-flex;
