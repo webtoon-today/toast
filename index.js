@@ -76,7 +76,7 @@ const Toast = () => {
         };
     }, [toast]);
     return (jsxRuntime.jsx(recoil.RecoilRoot, { children: jsxRuntime.jsx("div", { className: `ToastBackgroundArea ${show ? 'Open' : 'Close'}`, style: {
-                animationDuration: `${toast.timeout || 300}ms`,
+                animationDuration: `${(toast.timeout || 3000) / 10}ms`,
             }, children: jsxRuntime.jsx("div", { className: `ToastBox ${toast && toast.iconType ? "IconToast" : ""}`, children: toast && toast.iconType
                     ? jsxRuntime.jsxs(jsxRuntime.Fragment, { children: [jsxRuntime.jsx("img", { src: `https://static.webtoon.today/ddah/icon/icon_${toast.iconType}.svg`, alt: toast.iconType, width: 20, height: 20, style: { marginRight: 10 } }), toast.message, jsxRuntime.jsx("div", { className: 'CheckButton', onClick: () => setShow(false), children: '확인' })] })
                     : toast.message }) }) }));
