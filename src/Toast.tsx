@@ -25,7 +25,7 @@ export const Toast = () => {
     return (
         <RecoilRoot>
             <div className={`ToastBackgroundArea ${show ? 'Open' : 'Close'}`} style={{ 
-                animationDuration: `${toast.timeout || 300}ms`,
+                animationDuration: `${(toast.timeout || 3000) / 10}ms`,
             }}>
                 <div className={`ToastBox ${toast && toast.iconType?"IconToast":""}`} >
                     {toast && toast.iconType
