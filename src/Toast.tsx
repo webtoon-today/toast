@@ -24,9 +24,7 @@ export const Toast = () => {
 
     return (
         <RecoilRoot>
-            <div className={'ToastBackgroundArea'} style={{ 
-                display: show ? 'block' : 'none'
-            }}>
+            <div className={`ToastBackgroundArea ${show ? 'Open' : 'Close'}`} >
                 <div className={`ToastBox ${toast && toast.iconType?"IconToast":""}`} >
                     {toast && toast.iconType
                         ?<>
