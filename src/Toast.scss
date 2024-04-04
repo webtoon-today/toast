@@ -40,6 +40,8 @@
     width: 100vw; 
     min-height: 50px;
 
+    animation-duration: 287ms;
+    
     &.Open  { animation: toast-in   linear forwards; }
     &.Close { animation: toast-out  linear forwards; }
 
