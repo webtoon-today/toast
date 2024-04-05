@@ -40,9 +40,10 @@
     width: 100vw; 
     min-height: 50px;
     
-    &.Open  { animation: toast-in  287ms linear forwards; }
-    &.Close { animation: toast-out 287ms linear forwards; }
-
+    &.FadeIn  { animation: toast-in  287ms linear forwards; }
+    &.FadeOut { animation: toast-out 287ms linear forwards; }
+    &.Close   { display: none; }
+    
     .ToastBox{
         display: inline-flex;
         justify-content: center;
