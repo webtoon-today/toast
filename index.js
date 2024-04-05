@@ -63,21 +63,21 @@ styleInject(css_248z);
 
 const Toast = () => {
     const toast = recoil.useRecoilValue(toastAlertAtom);
-    const [show, setShow] = React.useState('Close');
+    const [animationState, setAnimationState] = React.useState('Close');
     React.useEffect(() => {
         if (!toast.message) {
             return;
         }
-        setShow('FadeIn');
+        setAnimationState('FadeIn');
         const timer = setTimeout(() => {
-            setShow('FadeOut');
+            setAnimationState('FadeOut');
         }, toast.timeout);
         return () => {
             clearTimeout(timer);
         };
     }, [toast]);
-    return (jsxRuntime.jsx(recoil.RecoilRoot, { children: jsxRuntime.jsx("div", { className: `ToastBackgroundArea ${show}`, children: jsxRuntime.jsx("div", { className: `ToastBox ${toast && toast.iconType ? "IconToast" : ""}`, children: toast && toast.iconType
-                    ? jsxRuntime.jsxs(jsxRuntime.Fragment, { children: [jsxRuntime.jsx("img", { src: `https://static.webtoon.today/ddah/icon/icon_${toast.iconType}.svg`, alt: toast.iconType, width: 20, height: 20, style: { marginRight: 10 } }), toast.message, jsxRuntime.jsx("div", { className: 'CheckButton', onClick: () => setShow('FadeOut'), children: '확인' })] })
+    return (jsxRuntime.jsx(recoil.RecoilRoot, { children: jsxRuntime.jsx("div", { className: `ToastBackgroundArea ${animationState}`, children: jsxRuntime.jsx("div", { className: `ToastBox ${toast && toast.iconType ? "IconToast" : ""}`, children: toast && toast.iconType
+                    ? jsxRuntime.jsxs(jsxRuntime.Fragment, { children: [jsxRuntime.jsx("img", { src: `https://static.webtoon.today/ddah/icon/icon_${toast.iconType}.svg`, alt: toast.iconType, width: 20, height: 20, style: { marginRight: 10 } }), toast.message, jsxRuntime.jsx("div", { className: 'CheckButton', onClick: () => setAnimationState('FadeOut'), children: '확인' })] })
                     : toast.message }) }) }));
 };
 
