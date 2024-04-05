@@ -6,15 +6,15 @@ import './Toast.scss';
 
 export const Toast = () => {
     const toast = useRecoilValue(toastAlertAtom);
-    const [show, setShow] = React.useState(false);
+    const [show, setShow] = React.useState<'FadeIn' | 'FadeOut' | 'Close'>('Close');
 
     React.useEffect(()=>{
         if (toast.message){
-            setShow(true);
+            setShow('FadeIn');
         }
 
         const timer = setTimeout(()=>{
-            setShow(false);
+            setShow('FadeOut');
         }, toast.timeout);
 
         return ()=>{
@@ -24,13 +24,13 @@ export const Toast = () => {
 
     return (
         <RecoilRoot>
-            <div className={`ToastBackgroundArea ${show ? 'Open' : 'Close'}`} >
+            <div className={`ToastBackgroundArea ${show}`} >
                 <div className={`ToastBox ${toast && toast.iconType?"IconToast":""}`} >
                     {toast && toast.iconType
                         ?<>
                             <img src={`https://static.webtoon.today/ddah/icon/icon_${toast.iconType}.svg`} alt={toast.iconType} width={20} height={20} style={{marginRight: 10}} />
                             {toast.message}
-                            <div className={'CheckButton'} onClick={()=>setShow(false)} >
+                            <div className={'CheckButton'} onClick={()=>setShow('FadeOut')} >
                                 {'확인'}
                             </div>
                         </>
