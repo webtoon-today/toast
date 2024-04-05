@@ -65,9 +65,10 @@ const Toast = () => {
     const toast = recoil.useRecoilValue(toastAlertAtom);
     const [show, setShow] = React.useState('Close');
     React.useEffect(() => {
-        if (toast.message) {
-            setShow('FadeIn');
+        if (!toast.message) {
+            return;
         }
+        setShow('FadeIn');
         const timer = setTimeout(() => {
             setShow('FadeOut');
         }, toast.timeout);

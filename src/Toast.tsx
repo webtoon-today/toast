@@ -9,9 +9,11 @@ export const Toast = () => {
     const [show, setShow] = React.useState<'FadeIn' | 'FadeOut' | 'Close'>('Close');
 
     React.useEffect(()=>{
-        if (toast.message){
-            setShow('FadeIn');
+        if (!toast.message) {
+            return;
         }
+        
+        setShow('FadeIn');
 
         const timer = setTimeout(()=>{
             setShow('FadeOut');
