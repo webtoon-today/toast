@@ -1,12 +1,49 @@
+@keyframes toast-in {
+    0% {
+        transform: translate3d(0, -100%, 0);
+        display: none;
+    }
+    1% {
+        transform: translate3d(0, -100%, 0);
+        display: block;
+    }
+    100%{
+        transform: translate3d(0, 0, 0);
+        display: block;
+    }
+}
+
+@keyframes toast-out {
+    0% {
+        display: block;
+        opacity: 1;
+        scale: 1;
+    }
+    99% {
+        display: block;
+        scale: 0.8;
+        opacity: 0;
+    }
+    100% {
+        scale: 0.8;
+        opacity: 0;
+        display: none;
+    }
+}
+
 .ToastBackgroundArea{
     z-index: 2000;
     font-size: 1rem;
     position: fixed;
-    top: 100px; 
+    top: 24px; 
     text-align: center;
     width: 100vw; 
     min-height: 50px;
-
+    
+    &.FadeIn  { animation: toast-in  287ms linear forwards; }
+    &.FadeOut { animation: toast-out 287ms linear forwards; }
+    &.Close   { display: none; }
+    
     .ToastBox{
         display: inline-flex;
         justify-content: center;
